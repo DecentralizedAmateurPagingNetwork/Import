@@ -1,5 +1,6 @@
 *Database.txt
 import.csv
+database.sqlite
 
 node_modules/
 npm-debug.log
