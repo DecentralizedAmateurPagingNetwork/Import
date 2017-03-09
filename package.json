@@ -12,12 +12,15 @@
 		"npm": ">=2.15.0"
 	},
 	"scripts": {
+		"deport-user": "node ./deport-user.js",
 		"import-user": "node ./import-user.js",
-		"import-callsigns": "node ./import-callsigns.js"
+		"import-user-db": "node ./import-user-db.js",
+		"import-callsigns": "node ./import-callsigns.js",
+		"import-callsigns-db": "node ./import-callsigns-db.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/DecentralizedAmateurPagingNetwork/xxx"
+		"url": "https://github.com/DecentralizedAmateurPagingNetwork/Import"
 	},
 	"keywords": [
 		"dapnet",

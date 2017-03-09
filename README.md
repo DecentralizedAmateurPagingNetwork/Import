@@ -1,6 +1,18 @@
 # DAPNET Import
 Node.js script to import users and their callsigns from a csv-file.
 
+## Commands
+* `npm run import-user`
+	* Imports all users into DAPNET (if they don't exist)
+* `npm run import-callsigns`
+	* Imports all callsigns into DAPNET (if they don't exist)
+* `npm run import-user-db`
+	* Extracts all users into a SQLite database (as JSON-body for DAPNET-import)
+* `npm run import-callsigns-db`
+	* Extracts all callsigns into a SQLite database (as JSON-body for DAPNET-import)
+* `npm run deport-user`
+	* Removes all imported, but not edited, users from DAPNET
+
 ## CSV source file
 * three columns
 	1. Callsign
@@ -18,14 +30,12 @@ Node.js script to import users and their callsigns from a csv-file.
 * Node.js >= `4.6.0`
 * npm >= `2.15.0`
 
-### Download & Run
+### Download
 ```bash
 git clone https://github.com/DecentralizedAmateurPagingNetwork/Import.git
 cd Import
 
 npm install
-npm run import-user
-npm run import-callsigns
 ```
 
 ### Configuration
