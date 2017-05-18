@@ -131,7 +131,7 @@ if (isset($_POST['inputCallsign'])) {
 			<div class="col-lg-4">
 				<h2>Information</h2>
 				<p>Enter your callsign and the system will create a new user and import your callsign into it.</p>
-				<p>Your new login-credentials are your callsign as username and password. Please change your password immediately and enter a current email-address.</p>
+				<p>To log in use your callsign for <i>both</i> <b>username</b> and <b>password</b>. Please change your password immediately and enter a current email-address.</p>
 			</div>
 		</div>
 	</div>
