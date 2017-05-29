@@ -4,8 +4,9 @@ DEFINE('AUTH', 'Basic ABCDEFG1234567');
 
 $message = '';
 
-if (isset($_POST['inputCallsign'])) {
+if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 	$callsign = trim(strtolower($_POST['inputCallsign']));
+	$email = trim(strtolower($_POST['inputEmail']));
 
 	// open database
 	$db = new SQLite3("database.sqlite");
@@ -19,13 +20,14 @@ if (isset($_POST['inputCallsign'])) {
 
 	if (!$data) {
 		$message = '<div class="alert alert-danger"><h4>Not Found</h4>Unable to find the given callsign.</div>';
+	} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$message = '<div class="alert alert-danger"><h4>Invalid Email</h4>Please enter a valid email address.</div>';
 	} else {
 		// check if user exists
 		$ch = curl_init(API_URL.'/users');
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-			'Content-Type: application/json',
 			'Authorization: '.AUTH
 		));
 		$result = curl_exec($ch);
@@ -42,10 +44,13 @@ if (isset($_POST['inputCallsign'])) {
 			}
 
 			if (!$alreadyImported) {
+				// generate json-object
+				$userData = array('hash' => $data["callsign"], 'mail' => $email, 'admin' => false);
+
 				// enter user
 				$ch = curl_init(API_URL.'/users/'.$data["callsign"]);
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data["requestUser"]);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($userData));
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 					'Content-Type: application/json',
@@ -120,6 +125,12 @@ if (isset($_POST['inputCallsign'])) {
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="inputCallsign" class="col-lg-2 control-label">Email</label>
+							<div class="col-lg-10">
+								<input type="text" class="form-control" name="inputEmail" placeholder="email@here.com">
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2">
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>
@@ -130,7 +141,7 @@ if (isset($_POST['inputCallsign'])) {
 
 			<div class="col-lg-4">
 				<h2>Information</h2>
-				<p>Enter your callsign and the system will create a new user and import your callsign into it.</p>
+				<p>Enter your callsign and email-address and the system will create a new user and import your callsign into it.</p>
 				<p>To log in use your callsign for <i>both</i> <b>username</b> and <b>password</b>. Please change your password immediately and enter a current email-address.</p>
 			</div>
 		</div>
