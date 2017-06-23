@@ -97,7 +97,7 @@ if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="index.php" class="navbar-brand"><img src="./assets/dapnet-logo.png" alt="DAPNET Logo" style="width:6em"/></a>
+				<a href="https://www.hampager.de" class="navbar-brand"><img src="./assets/dapnet-logo.png" alt="DAPNET Logo" style="width:6em"/></a>
 			</div>
 		</div>
 	</div>
