@@ -131,6 +131,16 @@ if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="inputConfirm" class="col-lg-2 control-label">Confirmation</label>
+							<div class="col-lg-10">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="inputConfirm"> <span style="color: red;"><b>I have read and understood the information and know my login name und password.</b></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2">
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>
