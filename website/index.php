@@ -7,6 +7,7 @@ $message = '';
 if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 	$callsign = trim(strtolower($_POST['inputCallsign']));
 	$email = trim(strtolower($_POST['inputEmail']));
+	$confirmed = isset($_POST['inputConfirm']);
 
 	// open database
 	$db = new SQLite3("database.sqlite");
@@ -18,7 +19,9 @@ if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 
 	$data = $res->fetchArray();
 
-	if (!$data) {
+	if (!$confirmed) {
+		$message = '<div class="alert alert-danger"><h4>Unconfirmed</h4>Please read the information provided on this page and check the confirmation-box.</div>';
+	} else if (!$data) {
 		$message = '<div class="alert alert-danger"><h4>Not Found</h4>Unable to find the given callsign.</div>';
 	} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$message = '<div class="alert alert-danger"><h4>Invalid Email</h4>Please enter a valid email address.</div>';
