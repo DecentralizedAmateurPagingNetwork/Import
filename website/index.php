@@ -138,7 +138,7 @@ if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 							<div class="col-lg-10">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="inputConfirm"> <span style="color: red;"><b>I have read and understood the information and know my login name und password.</b></span>
+										<input type="checkbox" name="inputConfirm"> <span style="color: red;"><b>I have read and understood the information and know my login name and password.</b></span>
 									</label>
 								</div>
 							</div>
@@ -154,8 +154,8 @@ if (isset($_POST['inputCallsign']) && isset($_POST['inputEmail'])) {
 
 			<div class="col-lg-4">
 				<h2>Information</h2>
-				<p>Enter your callsign and email-address and the system will create a new user and import your callsign into it.</p>
-				<p>To log in use your callsign for <i>both</i> <b>username</b> and <b>password</b>. Please change your password immediately and enter a current email-address.</p>
+				<p>Enter your callsign and email-address and the system will create a new user and import your callsign and associated pocsag receiver numbers into it.</p>
+				<p>Please use your callsign as username and according password as well to log in for the first time. As this combination can easily been guessed, you have to change this immediately. Note that your old passwort from the <i>FunkrufMaster Network</i> is obsolete here!</p>
 			</div>
 		</div>
 	</div>
